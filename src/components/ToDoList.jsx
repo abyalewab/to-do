@@ -83,8 +83,9 @@ const ToDoList = () => {
 
     return (
         <>
+            <div className="wrapper">
             <Toast ref={toast} />
-            <div className="flex flex-column align-items-center justify-content-center">
+            <div className="todo-container flex flex-column align-items-center justify-content-center">
                 <div>
                     <Card className="title">Quick Task</Card>
                 </div>
@@ -157,6 +158,25 @@ const ToDoList = () => {
                     </div>
                 </div>
             </div>
+
+            <div className='wrapper-bubble'> 
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+                <div><span className="dot"></span></div>
+            </div>                  
+          </div>
         </>
     )
 }
