@@ -1,27 +1,41 @@
 .title {
-    box-shadow: none;
-    background-color: #00509d;
-    color: #ffffff;
-    font-size: 1.3rem;
-    width: 20rem;
-    height: 5rem;
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  box-shadow: none;
+  background-color: #00509d;
+  color: #ffffff;
+  font-size: 1.3rem;
+  width: 20rem;
+  height: 5rem;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .task-card {
-    display: flex;
-    align-items: center;
-    margin-top: 0.8rem;
-    box-shadow: none;
-    background-color: #9ad1d4;
-    width: 25rem;
-    height: 8rem;
+  display: flex;
+  align-items: center;
+  margin-top: 0.8rem;
+  box-shadow: none;
+  background-color: #9ad1d4;
+  width: 25rem;
+  height: 8rem;
 }
 
-.p-card .p-card-content {
-    padding: 0;
-    height: 5rem;
+.todo-list-div {
+  .p-card .p-card-content {
+    padding: 1.25rem 0;
+    height: 8rem;
+    line-height: 1.5rem;
+  }
+}
+
+.task-card-completed {
+  display: flex;
+  align-items: center;
+  margin-top: 0.8rem;
+  box-shadow: none;
+  background-color: #9ad1d4;
+  width: 25rem;
+  height: 8rem;
+  text-decoration: line-through;
 }
