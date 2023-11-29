@@ -18,5 +18,10 @@
     box-shadow: none;
     background-color: #9ad1d4;
     width: 25rem;
+    height: 8rem;
+}
+
+.p-card .p-card-content {
+    padding: 0;
     height: 5rem;
 }

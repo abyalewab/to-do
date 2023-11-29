@@ -10,6 +10,8 @@ const ToDoList = () => {
     const [taskDescription, setTaskDescription] = useState("");
     const [taskList, setTaskList] = useState([]);
     const [taskindex, setTaskIndex] = useState(0);
+    const [updateIndex, setUpdateIndex] = useState(null);
+    const [isUpdate, setIsUpdate] = useState(false);
     const toast = useRef(null);
 
     const addTask = () => {
@@ -22,6 +24,29 @@ const ToDoList = () => {
         } else {
             toast.current.show({ severity: 'error', summary: 'Error', detail: 'Please enter your todo first.' });
         }
+    }
+
+    const updateTask = () => {
+        const taskDesc = taskDescription;
+
+        setTaskList(
+            taskList.map(task => {
+                if(task.id === updateIndex) {
+                    return {...task, taskDesc}
+                } else {
+                    return task;
+                }
+            })
+        )
+        
+        setTaskDescription("");
+        setUpdateIndex(null);
+        setIsUpdate(false);
+    }
+
+    const handleUpdate = (id, taskDesc) => {
+        setUpdateIndex(id);
+        setTaskDescription(taskDesc);
     }
 
     const deleteTask = (taskId) => {
@@ -43,18 +68,34 @@ const ToDoList = () => {
                             value={taskDescription} 
                             onChange={(e) => setTaskDescription(e.target.value)} 
                             placeholder="Write todo task..." 
-                            rows={5} 
+                            rows={3} 
                             cols={30}
                         /> 
 
-                        <Button icon="pi pi-plus" label="Add" className='ml-3' onClick={addTask}/>
+                        {(isUpdate === true) ? (
+                            <Button icon="pi pi-pencil" label="Update" className='ml-3' onClick={updateTask}/>
+                        ) : (
+                            <Button icon="pi pi-plus" label="Add" className='ml-3' onClick={addTask}/>
+                        )}
                         
                     </div>
 
                     <div className='flex-col align-items-center justify-content-center px-8' style={{maxHeight: "50dvh", overflow: "scroll"}}>
-                        {taskList.map(task => (
+                        {taskList.slice().reverse().map(task => (
                             <div className='flex align-items-center justify-content-center' key={task.id}>
-                                <Card className='task-card'>{task.taskDesc}</Card> 
+                                <Card className='task-card' style={{overflow: "auto"}}>{task.taskDesc}</Card> 
+
+                                <Button 
+                                    icon="pi pi-pencil" 
+                                    rounded 
+                                    severity="secondary" 
+                                    aria-label="Update" 
+                                    className='ml-2' 
+                                    onClick={() => {
+                                        setIsUpdate(true)
+                                        handleUpdate(task.id, task.taskDesc)
+                                    }}
+                                />
 
                                 <Button 
                                     icon="pi pi-times" 
@@ -64,7 +105,8 @@ const ToDoList = () => {
                                     className='ml-2' 
                                     onClick={() => {
                                         deleteTask(task.id)
-                                    }}/>
+                                    }}
+                                />
                             </div>
                         ))}
                     </div>
