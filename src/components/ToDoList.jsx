@@ -93,7 +93,14 @@ const ToDoList = () => {
         <Toast ref={toast} />
         <div className="todo-container flex flex-column align-items-center justify-content-center">
           <div>
-            <Card className="title">Quick Task</Card>
+            <Card className="title">
+                <div className="flex align-items-center justify-content-center">
+                    <div className="mr-2">
+                        <span className="pi pi-book" style={{ fontSize: '2rem' }}></span>
+                    </div>
+                    <div>Quick Task</div>
+                </div>
+            </Card>
           </div>
           <div
             className="flex-col align-items-center justify-content-center mt-6 px-5 py-5"
@@ -180,7 +187,7 @@ const ToDoList = () => {
                     />
 
                     <Button
-                      icon="pi pi-times"
+                      icon="pi pi-trash"
                       rounded
                       severity="danger"
                       aria-label="Cancel"
